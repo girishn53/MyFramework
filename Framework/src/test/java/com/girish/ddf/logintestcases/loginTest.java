@@ -25,6 +25,7 @@ public class loginTest extends TestBase {
 
 		quit();
 
+		System.out.println("Hello Login");
 		/*************************************************/
 		
 		
