@@ -1,0 +1,52 @@
+##########################################################################################
+#
+#******* Global Configurations for Automation Scripts  *******
+#
+##########################################################################################
+
+
+browser: mozila
+ExecutionType: remote
+RemoteIP: http://techshk:4444/wd/hub
+appurl: http://webdmzqa1.centurylink.com/business/login/
+ajax_timeout: 30
+
+User:
+
+ Credentials:
+  defaultUsername: 24769_itv2_selenium
+  defaultpassword: qcontrol1
+
+
+
+  Yourdetails:
+    Date: 20 May 2015
+    FirstName: Automation 
+    LastName: Test
+    Phone: "0123456789"
+    email: "test@automation.com"
+    
+  BillingAddress:
+    Address: B13 sector 23
+    City: Gurgaon
+    PostCode: 201301
+    
+  PaymentDetails:
+    CardNo: "4200000000000000"
+    CardHolderName: Automation
+    SecCode: 123
+  
+
+
+  
+##########################################################################################
+#
+#******* Configurations for Email Module  *******
+#
+##########################################################################################
+
+results:
+   sendEmail: "yes"
+   recipients: 
+       recipient1: samasgates@gmail.com
+
