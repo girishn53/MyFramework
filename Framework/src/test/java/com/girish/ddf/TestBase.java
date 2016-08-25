@@ -158,12 +158,11 @@ public class TestBase {
 
 	public boolean isElementPresent(String identifier) {
 		int size = 0;
-   
-		if (identifier.endsWith("_xpath")){
+
+		if (identifier.endsWith("_xpath")) {
 			size = driver.findElements(By.xpath(prop.getProperty(identifier))).size();
-		//System.out.println("size is"+size);
-		}
-		else if (identifier.endsWith("_id")) {
+			// System.out.println("size is"+size);
+		} else if (identifier.endsWith("_id")) {
 			size = driver.findElements(By.id(prop.getProperty(identifier))).size();
 		} else if (identifier.endsWith("_name")) {
 			size = driver.findElements(By.name(prop.getProperty(identifier))).size();
@@ -174,10 +173,7 @@ public class TestBase {
 		else {
 			return false;
 		}
-}
-
-
-	
+	}
 
 	public void wait(int time) {
 		try {
@@ -224,8 +220,9 @@ public class TestBase {
 		}
 
 		Actions action = new Actions(driver);
-		action.moveToElement(we).build().perform();
-		wait(5000);
+
+		action.moveToElement(we);
+		action.build().perform();
 
 	}
 

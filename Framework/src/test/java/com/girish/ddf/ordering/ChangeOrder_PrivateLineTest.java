@@ -20,7 +20,7 @@ public class ChangeOrder_PrivateLineTest extends TestBase {
 	}
 
 	@Test
-	public void addOrderPrivateLine() {
+	public void changeOrderPrivateLine() {
 
 		APPLICATION_LOG.debug("before login");
 
@@ -44,18 +44,22 @@ public class ChangeOrder_PrivateLineTest extends TestBase {
 
 		catch (ElementNotVisibleException e) {
 			e.printStackTrace();
-			System.out.println("goToControlCenter_xpath element not fould and in catch block");
+			System.out.println("goToControlCenter_xpath element not found and in catch block");
 
 		}
 
 		finally {
-
+			wait(10000);
+			
+			
 			mouseOver("ordersTab_xpath", driver);
+			
+		
 
-			click("addLink_xpath");
+			click("changeLink_xpath");
 
 			wait(1000);
-			switchToFrame("_48_INSTANCE_ZSN4kDufaWYE_iframe");
+			switchToFrame("_48_INSTANCE_p0O8eVSViIeR_iframe"); 
 
 			wait(2000);
 
@@ -66,10 +70,10 @@ public class ChangeOrder_PrivateLineTest extends TestBase {
 			input("contactName_xpath", "Test");
 
 			input("accountNumber_xpath", "67369192");
-			click("multipleRadio_xpath");
+			input("serviceId_xpath", "test");
 			waitTillInvisible("loadImage_xpath", driver, 10);
-
-			click("multipleRadio_xpath");
+            
+			
 			wait(2000);
 
 			click("calendar_xpath");
