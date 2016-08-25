@@ -5,7 +5,7 @@
 ##########################################################################################
 
 
-browser: mozila
+browser: chrome
 ExecutionType: remote
 RemoteIP: http://techshk:4444/wd/hub
 appurl: http://webdmzqa1.centurylink.com/business/login/
