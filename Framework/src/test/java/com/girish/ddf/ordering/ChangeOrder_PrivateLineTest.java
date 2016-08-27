@@ -6,6 +6,8 @@ import java.util.Date;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -58,11 +60,17 @@ public class ChangeOrder_PrivateLineTest extends TestBase {
 
 			click("changeLink_xpath");
 
-			wait(1000);
+			wait(10000);
+			
 			switchToFrame("_48_INSTANCE_p0O8eVSViIeR_iframe"); 
 
-			wait(2000);
+			//WebDriverWait wait=new WebDriverWait(driver, 30);
+			
+			//wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("serviceType_id"))));
 
+			
+			
+			
 			selectFromDropdown("serviceType_id", "Private Line");
 
 			waitTillInvisible("loadImage_xpath", driver, 10);
@@ -114,6 +122,10 @@ public class ChangeOrder_PrivateLineTest extends TestBase {
 			driver.findElement(By.xpath("//*[contains(@id,'" + day + "')]")).click();
 
 			click("submitButton_xpath");
+			wait(1000);
+			
+			click("submitButton_xpath");
+			
 			waitTillInvisible("loadImage_xpath", driver, 10);
 
 			Assert.assertTrue(isElementPresent("addConfirmPopUp_xpath"),
