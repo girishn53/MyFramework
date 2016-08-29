@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import com.girish.ddf.TestBase;
 
-public class DisconnectOrderTest extends TestBase {
+public class MoveOrder_PrivateLineTest extends TestBase {
 
 	@BeforeTest
 	public void initLogs() {
@@ -20,18 +20,16 @@ public class DisconnectOrderTest extends TestBase {
 	}
 
 	@Test
+	public void moveOrderPrivateLine() {
 
-	public void disconnectOrderTest() {
+		APPLICATION_LOG.debug("Before Login");
 
 		doDefaultLogin("loginUser_xpath", "loginPassword_xpath");
-		wait(30000);
+		wait(20000);
 
 		try {
 
 			boolean maintainPopUpisThere = isElementPresent("maintainPopUp_xpath");
-
-			// System.out.println("boolean value of
-			// maintainPopUpisThere"+maintainPopUpisThere);
 
 			if (maintainPopUpisThere) {
 				System.out.println("maintainenance pop up is present");
@@ -42,37 +40,36 @@ public class DisconnectOrderTest extends TestBase {
 		}
 
 		catch (ElementNotVisibleException e) {
-			e.printStackTrace();
-			System.out.println("goToControlCenter_xpath element not fould and in catch block");
+
+			System.out.println("goToControlCenter_xpath element not fould and in catch block ");
 
 		}
 
 		finally {
-
 			mouseOver("ordersTab_xpath", driver);
+			click("moveLink_xpath");
 
-			click("disconnectLink_xpath");
+			wait(15000);
+			switchToFrame("_48_INSTANCE_LF5JrZd60dAK_iframe");
+			wait(15000);
 
-			wait(1000);
+			waitTillInvisible("loadImage_xpath", driver, 20);
+
+			selectFromDropdown("serviceType_id", "Private Line");
+
 			waitTillInvisible("loadImage_xpath", driver, 10);
 
-			switchToFrame("_48_INSTANCE_FO1J0zGpUTsQ_iframe");
-			               
-
-			wait(500);
 			input("contactName_xpath", "test");
-
-			input("phoneNumber_xpath", "7835862025");
 
 			input("accountNumber_xpath", "67369192");
 
+			input("moveServiceId_xpath", "test");
+
 			waitTillInvisible("loadImage_xpath", driver, 10);
 
-			input("servicesToBeDisconnected_xpath", "test");
+			input("currentServiceAddress_xpath", "test");
 
-			input("serviceId_xpath", "test");
-
-			input("serviceAddress_xpath", "test");
+			input("newServiceAddress_xpath", "test");
 
 			click("calendar_xpath");
 
@@ -114,11 +111,20 @@ public class DisconnectOrderTest extends TestBase {
 			click("submitButton_xpath");
 			waitTillInvisible("loadImage_xpath", driver, 10);
 
-			Assert.assertTrue(isElementPresent("disconnectConfirmPopUp_xpath"),
-					"confirm pop up is not present so disconnect order is not successful");
+			try {
+				Assert.assertTrue(isElementPresent("addConfirmPopUp_xpath"),
+						"confirm pop up is not present so order is not successful");
 
-			quit();
+			} catch (AssertionError e) {
+				e.printStackTrace();
+				Assert.fail("confirm pop up is not present so order is not successful");
+			}
+
+			finally {
+				quit();
+			}
 
 		}
 	}
+
 }

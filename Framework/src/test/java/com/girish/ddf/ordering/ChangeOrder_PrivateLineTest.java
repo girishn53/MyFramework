@@ -124,10 +124,11 @@ public class ChangeOrder_PrivateLineTest extends TestBase {
 			click("submitButton_xpath");
 			wait(1000);
 			
-			click("submitButton_xpath");
+
 			
 			waitTillInvisible("loadImage_xpath", driver, 10);
 
+			
 			Assert.assertTrue(isElementPresent("addConfirmPopUp_xpath"),
 					"confirm pop up is not present so order is not successful");
 

@@ -15,7 +15,11 @@ import com.girish.ddf.TestBase;
 
 import bsh.ParseException;
 
+import org.testng.asserts.SoftAssert;
+
 public class AddOrder_PrivateLineTest extends TestBase {
+
+	//SoftAssert sa = new SoftAssert();
 
 	@BeforeTest
 	public void initLogs() {
@@ -34,9 +38,6 @@ public class AddOrder_PrivateLineTest extends TestBase {
 
 			boolean maintainPopUpisThere = isElementPresent("maintainPopUp_xpath");
 
-			// System.out.println("boolean value of
-			// maintainPopUpisThere"+maintainPopUpisThere);
-
 			if (maintainPopUpisThere) {
 				System.out.println("maintainenance pop up is present");
 
@@ -46,7 +47,7 @@ public class AddOrder_PrivateLineTest extends TestBase {
 		}
 
 		catch (ElementNotVisibleException e) {
-			e.printStackTrace();
+
 			System.out.println("goToControlCenter_xpath element not fould and in catch block");
 
 		}
@@ -57,10 +58,12 @@ public class AddOrder_PrivateLineTest extends TestBase {
 
 			click("addLink_xpath");
 
-			wait(1000);
+			wait(15000);
 			switchToFrame("_48_INSTANCE_ZSN4kDufaWYE_iframe");
 
 			wait(2000);
+
+			waitTillInvisible("loadImage_xpath", driver, 10);
 
 			selectFromDropdown("serviceType_id", "Private Line");
 
@@ -115,10 +118,18 @@ public class AddOrder_PrivateLineTest extends TestBase {
 			click("submitButton_xpath");
 			waitTillInvisible("loadImage_xpath", driver, 10);
 
-			Assert.assertTrue(isElementPresent("addConfirmPopUp_xpath"),
-					"confirm pop up is not present so order is not successful");
+			try {
+				Assert.assertTrue(isElementPresent("addConfirmPopUp_xpath"),
+						"confirm pop up is not present so order is not successful");
 
-			quit();
+			} catch (AssertionError e) {
+
+				Assert.fail("confirm pop up is not present so order is not successful");
+			}
+
+			finally {
+				quit();
+			}
 
 		}
 	}
