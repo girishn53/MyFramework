@@ -15,7 +15,7 @@ import com.girish.ddf.TestBase;
 
 import bsh.ParseException;
 
-import org.testng.asserts.SoftAssert;
+//import org.testng.asserts.SoftAssert;
 
 public class AddOrder_PrivateLineTest extends TestBase {
 

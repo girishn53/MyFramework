@@ -20,7 +20,6 @@ public class DisconnectOrderTest extends TestBase {
 	}
 
 	@Test
-
 	public void disconnectOrderTest() {
 
 		doDefaultLogin("loginUser_xpath", "loginPassword_xpath");
@@ -43,7 +42,8 @@ public class DisconnectOrderTest extends TestBase {
 
 		catch (ElementNotVisibleException e) {
 			e.printStackTrace();
-			System.out.println("goToControlCenter_xpath element not fould and in catch block");
+			System.out
+					.println("goToControlCenter_xpath element not fould and in catch block");
 
 		}
 
@@ -54,10 +54,9 @@ public class DisconnectOrderTest extends TestBase {
 			click("disconnectLink_xpath");
 
 			wait(1000);
-			waitTillInvisible("loadImage_xpath", driver, 10);
+			waitTillInvisible("loadImage_xpath", driver, 20);
 
 			switchToFrame("_48_INSTANCE_FO1J0zGpUTsQ_iframe");
-			               
 
 			wait(500);
 			input("contactName_xpath", "test");
@@ -89,7 +88,8 @@ public class DisconnectOrderTest extends TestBase {
 				// TODO Auto-generated catch block
 				ex.printStackTrace();
 			}
-			String month = new SimpleDateFormat("MMMM").format(dateToBeSelected);
+			String month = new SimpleDateFormat("MMMM")
+					.format(dateToBeSelected);
 			Calendar cal = Calendar.getInstance();
 			cal.setTime(dateToBeSelected);
 			int year = cal.get(Calendar.YEAR);
@@ -109,15 +109,24 @@ public class DisconnectOrderTest extends TestBase {
 			// driver.findElement(By.xpath("//td[text()='" + day +
 			// "']")).click();
 
-			driver.findElement(By.xpath("//*[contains(@id,'" + day + "')]")).click();
+			driver.findElement(By.xpath("//*[contains(@id,'" + day + "')]"))
+					.click();
 
 			click("submitButton_xpath");
 			waitTillInvisible("loadImage_xpath", driver, 10);
+			try {
+				Assert.assertTrue(
+						isElementPresent("disconnectConfirmPopUp_xpath"),
+						"confirm pop up is not present so disconnect order is not successful");
 
-			Assert.assertTrue(isElementPresent("disconnectConfirmPopUp_xpath"),
-					"confirm pop up is not present so disconnect order is not successful");
+			} catch (AssertionError e) {
 
-			quit();
+				Assert.fail("confirm pop up is not present so disconnect order is not successful");
+			}
+
+			finally {
+				quit();
+			}
 
 		}
 	}
