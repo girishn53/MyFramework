@@ -7,6 +7,7 @@ import java.util.Date;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -41,7 +42,7 @@ public class DisconnectOrderTest extends TestBase {
 		}
 
 		catch (ElementNotVisibleException e) {
-			e.printStackTrace();
+			
 			System.out
 					.println("goToControlCenter_xpath element not fould and in catch block");
 
@@ -58,7 +59,7 @@ public class DisconnectOrderTest extends TestBase {
 
 			switchToFrame("_48_INSTANCE_FO1J0zGpUTsQ_iframe");
 
-			wait(500);
+			wait(2000);
 			input("contactName_xpath", "test");
 
 			input("phoneNumber_xpath", "7835862025");
@@ -124,10 +125,14 @@ public class DisconnectOrderTest extends TestBase {
 				Assert.fail("confirm pop up is not present so disconnect order is not successful");
 			}
 
-			finally {
-				quit();
-			}
+			
 
 		}
+	}
+	
+	@AfterTest
+	public void closeBrowser(){
+		quit();
+		
 	}
 }

@@ -7,6 +7,7 @@ import java.util.Date;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -120,11 +121,15 @@ public class MoveOrder_PrivateLineTest extends TestBase {
 				Assert.fail("confirm pop up is not present so order is not successful");
 			}
 
-			finally {
-				quit();
-			}
-
+			
 		}
+	}
+	
+	
+	@AfterTest
+	public void closeBrowser(){
+		quit();
+		
 	}
 
 }

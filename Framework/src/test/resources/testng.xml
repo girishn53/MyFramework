@@ -29,6 +29,22 @@
 	</test>
 
 
+	<test name="Change order private line ">
+		<classes>
+			<class name="com.girish.ddf.ordering.ChangeOrder_PrivateLineTest" />
+
+		</classes>
+	</test>
+
+
+	<test name="Move order private line ">
+		<classes>
+			<class name="com.girish.ddf.ordering.MoveOrder_PrivateLineTest" />
+
+		</classes>
+	</test>
+
+
 
 
 

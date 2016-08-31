@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -32,7 +33,7 @@ public class AddOrder_PrivateLineTest extends TestBase {
 		APPLICATION_LOG.debug("before login");
 
 		doDefaultLogin("loginUser_xpath", "loginPassword_xpath");
-		wait(20000);
+		wait(25000);
 
 		try {
 
@@ -53,7 +54,8 @@ public class AddOrder_PrivateLineTest extends TestBase {
 		}
 
 		finally {
-
+			wait(10000);
+			
 			mouseOver("ordersTab_xpath", driver);
 
 			click("addLink_xpath");
@@ -127,10 +129,16 @@ public class AddOrder_PrivateLineTest extends TestBase {
 				Assert.fail("confirm pop up is not present so order is not successful");
 			}
 
-			finally {
-				quit();
-			}
+			
 
 		}
-	}
+		}
+	
+		@AfterTest
+		public void closeBrowser(){
+			quit();
+			
+		}
+	
+	
 }

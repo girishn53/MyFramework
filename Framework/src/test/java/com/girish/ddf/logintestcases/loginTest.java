@@ -1,5 +1,6 @@
 package com.girish.ddf.logintestcases;
 
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -23,11 +24,17 @@ public class loginTest extends TestBase {
 		if (maintainPopUpisThere)
 			System.out.println("maintainenance pop up is present");
 
-		quit();
+		
 
 		System.out.println("Hello Login");
 		/*************************************************/
 		
+		
+	}
+	
+	@AfterTest
+	public void closeBrowser(){
+		quit();
 		
 	}
 

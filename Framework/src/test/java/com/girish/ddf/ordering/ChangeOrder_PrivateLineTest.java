@@ -9,6 +9,7 @@ import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -27,7 +28,7 @@ public class ChangeOrder_PrivateLineTest extends TestBase {
 		APPLICATION_LOG.debug("before login");
 
 		doDefaultLogin("loginUser_xpath", "loginPassword_xpath");
-		wait(20000);
+		wait(25000);
 
 		try {
 
@@ -68,7 +69,7 @@ public class ChangeOrder_PrivateLineTest extends TestBase {
 			
 			//wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("serviceType_id"))));
 
-			
+			waitTillInvisible("loadImage_xpath", driver, 30);
 			
 			
 			selectFromDropdown("serviceType_id", "Private Line");
@@ -132,8 +133,14 @@ public class ChangeOrder_PrivateLineTest extends TestBase {
 			Assert.assertTrue(isElementPresent("addConfirmPopUp_xpath"),
 					"confirm pop up is not present so order is not successful");
 
-			quit();
-
+			
 		}
 	}
+	
+	@AfterTest
+	public void closeBrowser(){
+		quit();
+		
+	}
+	
 }
