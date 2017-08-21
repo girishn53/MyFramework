@@ -32,7 +32,7 @@ User:
     PostCode: 201301
     
   PaymentDetails:
-    CardNo: "4200000000000000"
+    CardNo: "4200000000000000454"
     CardHolderName: Automation
     SecCode: 123
   
@@ -48,5 +48,5 @@ User:
 results:
    sendEmail: "yes"
    recipients: 
-       recipient1: girishn53@gmail.com
+       recipient1: kakwani_g@yahoo.com
 
