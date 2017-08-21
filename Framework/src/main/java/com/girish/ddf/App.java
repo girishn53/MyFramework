@@ -9,6 +9,6 @@ public class App
     public static void main( String[] args )
     {
         System.out.println( "Hello World!" );
-        System.out.println("Change made on test branch");
+        System.out.println("Changes made on test branch");
     }
 }
