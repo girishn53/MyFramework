@@ -8,14 +8,14 @@
 browser: mozila
 ExecutionType: remote
 RemoteIP: http://techshk:4444/wd/hub
-appurl: http://webdmzqa1.centurylink.com/business/login/
+appurl: https://www.facebook.com/
 ajax_timeout: 30
 
 User:
 
  Credentials:
-  defaultUsername: 24769_itv2_selenium
-  defaultpassword: qcontrol1
+  defaultUsername: 7976447882
+  defaultpassword: omegaf99*
 
 
 
